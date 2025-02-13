@@ -1,0 +1,34 @@
+# Node.js 관련
+frontend/node_modules/
+frontent/.next/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vite 빌드 출력물
+dist/
+
+# 환경변수 파일
+.env
+.env.local
+.env.*.local
+
+# 에디터/IDE 설정 파일
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS 관련 파일
+.DS_Store
+Thumbs.db
+
+# 로그 파일
+*.log
+
+# 테스트 및 커버리지
+coverage/
+*.lcov
+
+# 기타
+*.temp

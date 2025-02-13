@@ -1,0 +1,218 @@
+[
+  {
+    "store_id": "2b343870-32bb-4e1e-935d-82842d74b0f0",
+    "user_id": "615d547f-008e-485b-a655-e51a80fc44fa",
+    "name": "한식 대가",
+    "phone": "010-867-8612",
+    "rate": 5.0,
+    "tip": 3000,
+    "maximum_amount":25000
+  },
+  {
+    "store_id": "1c53b261-a358-4be8-bae7-9421f66a4e8e",
+    "user_id": "6e477c70-d02b-4bbc-9fe5-33257ed81723",
+    "name": "오리지널 피자",
+    "phone": "02-517-7137",
+    "rate": 4.0,
+    "tip": 2500,
+    "maximum_amount":22000
+  },
+  {
+    "store_id": "4664ece2-0625-4c5d-b86f-fa3b7b50c5f4",
+    "user_id": "2138b691-9e2c-416a-93a4-c5bedb5749f4",
+    "name": "베트남 쌀국수",
+    "phone": "010-430-9091",
+    "rate": 4.7,
+    "tip": 1000,
+    "maximum_amount":15000
+  },
+  {
+    "store_id": "8d908706-2460-4eed-ae09-4c89752952e4",
+    "user_id": "093e58b9-d2eb-4e9b-ab75-219e3e2657b9",
+    "name": "떡볶이와 순대",
+    "phone": "064-862-4504",
+    "rate": 4.8,
+    "tip": 2000,
+    "maximum_amount":15000
+  },
+  {
+    "store_id": "4351600c-49e9-4d87-bab7-021bf8a93517",
+    "user_id": "672f2390-d01c-4b6a-9842-0be4ef5596d7",
+    "name": "엽기떡볶이",
+    "phone": "064-406-7223",
+    "rate": 4.3,
+    "tip": 2000,
+    "maximum_amount":15000
+  },
+  {
+    "store_id": "eebb3867-87c8-4571-b194-ecb8f10a3606",
+    "user_id": "2fc75a8b-bb86-4328-aadd-4aface14cbac",
+    "name": "제주 흑돼지 전문점",
+    "phone": "064-711-1724",
+    "rate": 3.7,
+    "tip": 2000,
+    "maximum_amount":15000
+  },
+  {
+    "store_id": "7c92ff40-140a-49fd-963f-b4bdfd30bda4",
+    "user_id": "d65ceee5-0d08-4d5b-a082-9739783fb01e",
+    "name": "파리바게트",
+    "phone": "031-293-2196",
+    "rate": 4.7,
+    "tip": 4000,
+    "maximum_amount":30000
+  },
+  {
+    "store_id": "6bfddaa6-8826-4f31-bbd1-9a21966323ba",
+    "user_id": "f0af8228-dac5-4e0a-a92a-4b442fd5e925",
+    "name": "포메인",
+    "phone": "031-547-4769",
+    "rate": 4.3,
+    "tip": 1500,
+    "maximum_amount":20000
+  },
+  {
+    "store_id": "05366c1d-f5c1-481a-a0b3-28f137fb228f",
+    "user_id": "99df7a3e-b233-479f-bf73-a93adc8d1030",
+    "name": "홍콩반점",
+    "phone": "031-350-4843",
+    "rate": 3.3,
+    "tip": 3500,
+    "maximum_amount":20000
+  },
+  {
+    "store_id": "fbdedc55-0ae8-46dd-a1c9-b8b7f3125f89",
+    "user_id": "e81a7449-fc33-43f2-8298-fe2146f1b5a6",
+    "name": "빽보이 피자",
+    "phone": "031-215-2434",
+    "rate": 5.0,
+    "tip": 1500,
+    "maximum_amount":20000
+  },
+  {
+    "store_id": "c693fed4-e38a-410b-991b-807a0c22250f",
+    "user_id": "2bdfe58d-fc81-4c62-b7ed-da44a9a6ed8f",
+    "name": "광화루",
+    "phone": "031-525-4746",
+    "rate": 4.2,
+    "tip": 0,
+    "maximum_amount":25000
+  },
+  {
+    "store_id": "5afb96ec-4e9b-43c1-97fc-1299815dac12",
+    "user_id": "747ae31d-12bd-4320-8d87-6730b24fa81d",
+    "name": "이모네 아구찜",
+    "phone": "031-590-4395",
+    "rate": 4.5,
+    "tip": 3000,
+    "maximum_amount":20000
+  },
+  {
+    "store_id": "39b363f6-c930-4f37-bd81-4f3c337cc075",
+    "user_id": "b179d6d2-93eb-465f-9d62-93f1b37b5b09",
+    "name": "버거킹",
+    "phone": "031-688-3553",
+    "rate": 4.6,
+    "tip": 3500,
+    "maximum_amount":15000
+  },
+  {
+    "store_id": "d52f5a9b-d897-41e1-84ce-c1a6793a9772",
+    "user_id": "d31aea10-acbf-4bd5-ac12-25fcf7162766",
+    "name": "네네치킨",
+    "phone": "02-761-1124",
+    "rate": 5.0,
+    "tip": 2000,
+    "maximum_amount":20000
+  },
+  {
+    "store_id": "441d60cf-85ae-48e4-a48a-b0008f79669f",
+    "user_id": "affda32e-98ff-4237-a199-53d9cdd5c9b1",
+    "name": "또래오래",
+    "phone": "031-196-8639",
+    "rate": 4.7,
+    "tip": 2000,
+    "maximum_amount":20000
+  },
+  {
+    "store_id": "cea43352-ba31-45e5-b537-cd040f32de67",
+    "user_id": "dc733d34-7b73-4170-a20a-bb4e747db344",
+    "name": "바른치킨",
+    "phone": "064-347-7558",
+    "rate": 5.0,
+    "tip": 1500,
+    "maximum_amount":22000
+  },
+  {
+    "store_id": "7b56d88a-c593-4b00-bd22-3d71b9a18b87",
+    "user_id": "9c4eee7d-1328-43a6-a4c6-6e5236418f07",
+    "name": "맥시카나",
+    "phone": "031-734-4562",
+    "rate": 4.7,
+    "tip": 2000,
+    "maximum_amount":20000
+  },
+  {
+    "store_id": "f09ab36b-4e16-4414-aa0a-0cd54765ff4b",
+    "user_id": "21cea8b7-4cea-4e40-9ec4-ae73e2995d4a",
+    "name": "롯데리아",
+    "phone": "010-212-9386",
+    "rate": 4.5,
+    "tip": 1500,
+    "maximum_amount":15000
+  },
+  {
+    "store_id": "d4f9a3b7-4db0-4234-813d-98af6c279ff7",
+    "user_id": "8231f9b8-a97b-45a7-85e1-ca47ea213dd6",
+    "name": "새마을식당",
+    "phone": "02-130-7804",
+    "rate": 4.3,
+    "tip": 2000,
+    "maximum_amount":30000
+  },
+  {
+    "store_id": "3eb384f7-430f-4bfd-9280-abb6e42f5c05",
+    "user_id": "06669394-bf7f-41b9-ab3b-b2beb41b9804",
+    "name": "할매순대국",
+    "phone": "064-578-2107",
+    "rate": 4.6,
+    "tip": 1000,
+    "maximum_amount":20000
+  },
+  {
+    "store_id": "3287e863-c040-499e-9779-a6d437d002be",
+    "user_id": "8490dbfb-1792-41d5-9dc2-e8f7846f51be",
+    "name": "한신포차",
+    "phone": "02-282-2946",
+    "rate": 4.8,
+    "tip": 1500,
+    "maximum_amount":20000
+  },
+  {
+    "store_id": "c9062cc1-9523-4469-8e30-ccf91b703cfb",
+    "user_id": "05e46d86-4ea9-42ad-b354-6aac5e484fbb",
+    "name": "놀부부대찌개",
+    "phone": "010-780-8257",
+    "rate": 4.3,
+    "tip": 1000,
+    "maximum_amount":30000
+  },
+  {
+    "store_id": "6174cc77-8831-48c3-95ee-6d68bfe01b53",
+    "user_id": "d1b5c95a-40dd-403b-b7a5-6f351932c033",
+    "name": "장충동 왕족발",
+    "phone": "031-734-2794",
+    "rate": 4.2,
+    "tip": 2000,
+    "maximum_amount":30000
+  },
+  {
+    "store_id": "f1886aad-89f8-4d99-88fa-285d49ce5450",
+    "user_id": "8be9d3a8-6e95-41a3-b632-2e8da4868a9f",
+    "name": "원할머니보쌈",
+    "phone": "02-623-3633",
+    "rate": 5.0,
+    "tip": 2000,
+    "maximum_amount":30000
+  }
+]

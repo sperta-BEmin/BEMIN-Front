@@ -1,0 +1,27 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "hyhy9501@gmail.com",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "next": "^15.1.3",
+    "prop-types": "^15.8.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "eslint": "^9.18.0",
+    "eslint-config-next": "^15.1.3",
+    "eslint-plugin-react": "^7.37.3",
+    "globals": "^15.14.0"
+  }
+}
