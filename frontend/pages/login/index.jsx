@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import Input from "../../components/Input";
+import {loginUser} from "../../utils/userApi";
+import {router} from "next/client";
 
 export default function Login() {
     const [formData, setFormData] = useState({
-        userId: "",
+        userEmail: "",
         password: "",
     });
 
@@ -13,6 +15,23 @@ export default function Login() {
             [key]: value,
         });
     };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const response = await loginUser(formData);
+        console.log(response);
+
+        if (response.error) {
+            console.log(response.error);
+        } else {
+            console.log(response);
+            // 임시 데이터 세팅
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("email", response.data.email);
+            await router.push("/");
+        }
+    }
 
 
     return (
@@ -27,13 +46,13 @@ export default function Login() {
                         />
                         <div className="card-body">
                             <h3 className="text-center">로그인</h3>
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <Input
-                                    id="userId"
-                                    label="아이디"
-                                    placeholder="아이디를 입력하세요"
-                                    type="text"
-                                    onChange={(e) => handleChange("userId", e.target.value)}
+                                    id="userEmail"
+                                    label="이메일"
+                                    placeholder="이메일을 입력하세요"
+                                    type="email"
+                                    onChange={(e) => handleChange("userEmail", e.target.value)}
                                 />
                                 <Input
                                     id="password"

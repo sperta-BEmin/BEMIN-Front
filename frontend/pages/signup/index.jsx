@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Input from "../../components/Input";
+import {checkEmailExists, signupUser} from "../../utils/userApi";
+import {router} from "next/client";
 
 export default function SignUp() {
     const [formData, setFormData] = useState({
-        userId: "",
+        userEmail: "",
         password: "",
         name: "",
-        phone: "",
-        email: "",
-        address: "",
         nickname: "",
+        phone: "",
+        address: "",
+        role:"CUSTOMER",
     });
 
     const handleChange = (key, value) => {
@@ -18,6 +20,10 @@ export default function SignUp() {
             [key]: value,
         });
     };
+
+    const validateEmail = () => {
+        checkEmailExists(formData.userEmail).then(r => console.log(r));
+    }
 
     // Daum Postcode API를 로드하는 함수
     const loadDaumPostcodeScript = () => {
@@ -49,12 +55,17 @@ export default function SignUp() {
         }).open();
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("회원가입 데이터:", formData);
-        alert(
-            `아이디: ${formData.userId}\n닉네임: ${formData.nickname}\n비밀번호: ${formData.password}\n이름: ${formData.name}\n전화번호: ${formData.phone}\n이메일: ${formData.email}\n주소: ${formData.address}`
-        );
+
+        const response = await signupUser(formData);
+        console.log(response);
+
+        if (response.error) {
+            console.log(response.error);
+        } else {
+            await router.push("/login");
+        }
     };
 
     useEffect(() => {
@@ -69,19 +80,19 @@ export default function SignUp() {
                 <div className="col-md-4 card p-3">
                     <form onSubmit={handleSubmit}>
                         <Input
-                            id="userId"
-                            label="아이디"
-                            placeholder="아이디를 입력하세요"
-                            type="text"
-                            onChange={(e) => handleChange("userId", e.target.value)}
+                            id="userEmail"
+                            label="이메일"
+                            placeholder="이메일을 입력하세요"
+                            type="email"
+                            onChange={(e) => handleChange("userEmail", e.target.value)}
                         />
-                        <Input
-                            id="nickname"
-                            label="사용자 닉네임"
-                            placeholder="닉네임을 입력하세요"
-                            type="text"
-                            onChange={(e) => handleChange("nickname", e.target.value)}
-                        />
+                        <button
+                            type="button"
+                            className="btn btn-primary w-100"
+                            onClick={validateEmail}
+                        >
+                            이메일 중복 검사
+                        </button>
                         <Input
                             id="password"
                             label="비밀번호"
@@ -97,6 +108,13 @@ export default function SignUp() {
                             onChange={(e) => handleChange("name", e.target.value)}
                         />
                         <Input
+                            id="nickname"
+                            label="사용자 닉네임"
+                            placeholder="닉네임을 입력하세요"
+                            type="text"
+                            onChange={(e) => handleChange("nickname", e.target.value)}
+                        />
+                        <Input
                             id="phone"
                             label="전화번호"
                             placeholder="전화번호를 입력하세요"
@@ -104,11 +122,11 @@ export default function SignUp() {
                             onChange={(e) => handleChange("phone", e.target.value)}
                         />
                         <Input
-                            id="email"
-                            label="이메일"
-                            placeholder="이메일을 입력하세요"
-                            type="email"
-                            onChange={(e) => handleChange("email", e.target.value)}
+                            id="userId"
+                            label="아이디"
+                            placeholder="아이디를 입력하세요"
+                            type="text"
+                            onChange={(e) => handleChange("userId", e.target.value)}
                         />
                         <div className="mb-3">
                             <label htmlFor="address" className="form-label">주소</label>

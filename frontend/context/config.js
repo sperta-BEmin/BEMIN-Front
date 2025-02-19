@@ -1,0 +1,1 @@
+export const GO_API = "http://localhost:8080";
