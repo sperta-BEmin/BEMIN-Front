@@ -44,7 +44,7 @@ const Navbar = ({ children }) => {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                             <Link href="/order" className="nav-link active" aria-current="page">
-                                Order테스트
+                                테스트
                             </Link>
                         </li>
                         <li className="nav-item">

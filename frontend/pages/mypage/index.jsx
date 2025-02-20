@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Input from "../../components/Input";
-import {getMyInfo, signupUser, updateMyInfo} from "../../utils/userApi";
-import {router} from "next/client";
+import {getMyInfo, updateMyInfo} from "../../utils/userApi";
 import {setUserNickname} from "../../utils/localUser";
 
 export default function MyPage() {

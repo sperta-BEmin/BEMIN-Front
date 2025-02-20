@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { comma } from "../js/common";
 import storeDataArr from '../temp_data/store_data.json';
-import { foodCategoryArr } from "../context/FoodCategoryArr";
+import { foodCategoryArr } from "../utils/FoodCategoryArr";
 
 export default function Home() {
     const [selectedCategory, setSelectedCategory] = useState(null);

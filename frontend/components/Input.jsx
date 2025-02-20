@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Input({ id, label, placeholder, onChange, type, value }) {
+export default function Input({ id, label, placeholder, onChange, type, value, readOnly = false }) {
     return (
         <div className="mb-3">
             <label htmlFor={id} className="form-label">{label}</label>
@@ -11,6 +11,7 @@ export default function Input({ id, label, placeholder, onChange, type, value })
                 onChange={onChange}
                 type={type}
                 value={value}
+                readOnly={readOnly}
             />
         </div>
     );

@@ -10,7 +10,12 @@ export default function SignUp() {
         name: "",
         nickname: "",
         phone: "",
-        address: "",
+        address: {
+            bcode: "",
+            jibunAddress: "",
+            roadAddress: "",
+            detail: ""
+        },
         role:"CUSTOMER",
     });
 
@@ -20,6 +25,16 @@ export default function SignUp() {
             [key]: value,
         });
     };
+
+    const handleAddressChange = (key, value) => {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            address: {
+                ...prevFormData.address,
+                [key]: value,
+            }
+        }));
+    }
 
     const validateEmail = () => {
         checkEmailExists(formData.userEmail).then(r => console.log(r));
@@ -47,10 +62,15 @@ export default function SignUp() {
                 // 다음 주소 검색 데이터 console.log
                 console.log(data);
                 // 주소 검색 결과를 formData에 반영
-                setFormData({
-                    ...formData,
-                    address: data.address, // 검색된 주소를 address 필드에 업데이트
-                });
+                setFormData((prevFormData) => ({
+                    ...prevFormData,
+                        address: {
+                        ...prevFormData.address,
+                            jibunAddress: data.jibunAddress,
+                            roadAddress: data.roadAddress,
+                            bcode: data.bcode,
+                        }
+                }));
             },
         }).open();
     };
@@ -122,24 +142,42 @@ export default function SignUp() {
                             onChange={(e) => handleChange("phone", e.target.value)}
                         />
                         <div className="mb-3">
-                            <label htmlFor="address" className="form-label">주소</label>
-                            <input
-                                type="text"
-                                id="address"
-                                className="form-control form-control-lg"
-                                placeholder="주소를 검색하세요"
-                                value={formData.address}
-                                readOnly
-                            />
                             <button
                                 type="button"
-                                className="btn btn-secondary mt-2"
+                                className="btn btn-secondary mt-2 w-100"
                                 onClick={openDaumPostcode}
                             >
                                 주소 검색
                             </button>
+                            <Input
+                                type="text"
+                                id="jibunAddress"
+                                label="지번 주소"
+                                className="form-control form-control-lg"
+                                placeholder="주소를 검색해주세요."
+                                value={formData.address.jibunAddress}
+                                readOnly={true}
+                            />
+                            <Input
+                                label="도로명 주소"
+                                id="roadAddress"
+                                type="text"
+                                className="form-control form-control-lg"
+                                placeholder="주소를 검색해주세요."
+                                value={formData.address.roadAddress}
+                                readOnly={true}
+                            />
+                            <Input
+                                label="상세 주소"
+                                id="detail"
+                                type="text"
+                                className="form-control form-control-lg"
+                                placeholder="상세 주소를 입력해주세요."
+                                value={formData.address.detail}
+                                onChange={(e) => handleAddressChange("detail", e.target.value)}
+                            />
                         </div>
-                        <button type="submit" className="btn btn-primary mt-3">
+                        <button type="submit" className="btn btn-success mt-3">
                             회원가입
                         </button>
                     </form>

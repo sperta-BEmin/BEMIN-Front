@@ -48,3 +48,7 @@ export const updateMyInfo = async (userData) => apiRequest("PUT", "users/my-info
 export const createOrder = async (orderData) => apiRequest("POST", "orders/order", {}, orderData);
 export const readOrder = async (params) => apiRequest("GET", "orders/check", params);
 export const getOrderDetailsByOrderId = async (orderId) => apiRequest("GET", "orders/detail/", { orderId });
+
+// category API 요청 함수들
+export const createCategory = async (categoryData) => apiRequest("POST", "v1/admin/categories", {}, categoryData);
+export const getCategories = async () => apiRequest("GET", "v1/categories");
