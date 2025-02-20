@@ -1,7 +1,34 @@
 import Link from 'next/link';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useAuth} from "../context/AuthContext";
+import {getUserNickname, logout} from "../utils/localUser";
+import {router} from "next/client";
 
 const Navbar = ({ children }) => {
+    const { loggedIn, setLoggedIn } = useAuth();
+    const [ nickname, setNickname ] = useState(getUserNickname());
+
+    useEffect(() => {
+        const handleUserChange = () => {
+            setNickname(getUserNickname());
+        }
+
+        window.addEventListener("userChanged", handleUserChange);
+        return () => {
+            window.removeEventListener("userChanged", handleUserChange);
+        };
+    }, [])
+
+    if (loggedIn === null) {
+        return null;
+    }
+
+    const handleLogout = () => {
+        logout();
+        setLoggedIn(false);
+        router.push("/");
+    }
+
     return (
         <nav className="navbar navbar-expand-lg shadow bg-body-tertiary mb-5">
             <div className="container-fluid">
@@ -18,6 +45,11 @@ const Navbar = ({ children }) => {
                         <li className="nav-item">
                             <Link href="/order" className="nav-link active" aria-current="page">
                                 Order테스트
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link href="/order/mylist" className="nav-link active" aria-current="page">
+                                주문 내역
                             </Link>
                         </li>
                         {/*<li className="nav-item">*/}
@@ -44,12 +76,28 @@ const Navbar = ({ children }) => {
                         </li>
                     </ul>
                     <div className="d-flex ms-auto">
-                        <Link href="/login" className="btn btn-outline-primary me-2">
-                            로그인
-                        </Link>
-                        <Link href="/signup" className="btn btn-primary">
-                            회원가입
-                        </Link>
+                        {loggedIn ? (
+                            <>
+                                <Link href="/mypage" className="btn btn-success me-2">
+                                    {nickname}
+                                </Link>
+                                <button
+                                    className="btn btn-danger"
+                                    onClick={handleLogout}
+                                >
+                                    로그아웃
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <Link href="/login" className="btn btn-outline-primary me-2">
+                                    로그인
+                                </Link>
+                                <Link href="/signup" className="btn btn-primary">
+                                    회원가입
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

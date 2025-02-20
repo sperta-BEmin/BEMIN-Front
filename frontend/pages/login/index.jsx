@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Input from "../../components/Input";
 import {loginUser} from "../../utils/userApi";
 import {router} from "next/client";
+import {setUser} from "../../utils/localUser";
 
 export default function Login() {
     const [formData, setFormData] = useState({
@@ -27,8 +28,7 @@ export default function Login() {
         } else {
             console.log(response);
             // 임시 데이터 세팅
-            localStorage.setItem("token", response.data.token);
-            localStorage.setItem("email", response.data.email);
+            setUser(response.data);
             await router.push("/");
         }
     }

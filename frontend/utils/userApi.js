@@ -1,8 +1,13 @@
+import {getUserToken} from "./localUser";
+
 async function apiRequest(method, path, params = {}, body = null) {
+    // path가 슬래시('/')로 끝나는 경우 제거
+    path = path.replace(/\/$/, "");
+
     const queryString = new URLSearchParams(params).toString();
     const url = `/api/proxy?path=${path}${queryString ? `&${queryString}` : ""}`;
 
-    const token = localStorage.getItem("token");
+    const token = getUserToken();
 
     const headers = {"Content-Type": "application/json"};
 
@@ -11,7 +16,7 @@ async function apiRequest(method, path, params = {}, body = null) {
     }
 
     if (method !== "GET") {
-        headers["Content-Type"] = "application/json"; // GET 요청에서는 Content-Type 제외
+        headers["Content-Type"] = "application/json";
     }
 
     try {
@@ -36,6 +41,10 @@ async function apiRequest(method, path, params = {}, body = null) {
 export const checkEmailExists = (email) => apiRequest("GET", "auth/email/exists", { email });
 export const signupUser = async (userData) => apiRequest("POST", "auth/signup", {}, userData);
 export const loginUser = async (userData) => apiRequest("POST", "auth/signin", {}, userData);
+export const getMyInfo = async () => apiRequest("GET", "users/my-info", {}, {});
+export const updateMyInfo = async (userData) => apiRequest("PUT", "users/my-info", {}, userData);
 
 // order API 요청 함수들
 export const createOrder = async (orderData) => apiRequest("POST", "orders/order", {}, orderData);
+export const readOrder = async (params) => apiRequest("GET", "orders/check", params);
+export const getOrderDetailsByOrderId = async (orderId) => apiRequest("GET", "orders/detail/", { orderId });

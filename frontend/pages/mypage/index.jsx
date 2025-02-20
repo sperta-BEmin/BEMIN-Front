@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Input from "../../components/Input";
-import {checkEmailExists, signupUser} from "../../utils/userApi";
+import {getMyInfo, signupUser, updateMyInfo} from "../../utils/userApi";
 import {router} from "next/client";
+import {setUserNickname} from "../../utils/localUser";
 
-export default function SignUp() {
+export default function MyPage() {
     const [formData, setFormData] = useState({
-        userEmail: "",
         password: "",
-        name: "",
         nickname: "",
         phone: "",
         address: "",
-        role:"CUSTOMER",
     });
 
     const handleChange = (key, value) => {
@@ -21,8 +19,22 @@ export default function SignUp() {
         });
     };
 
-    const validateEmail = () => {
-        checkEmailExists(formData.userEmail).then(r => console.log(r));
+    const fetchMyData = async () => {
+        try {
+            let res = await getMyInfo();
+            if (res) {
+                console.log(res);
+                const userData= res.data;
+                setFormData({
+                    password: "",
+                    nickname: userData.nickname,
+                    phone: userData.phone,
+                    address: userData.address,
+                })
+            }
+        } catch (e) {
+            console.log("유저 데이터 로드 실패", e);
+        }
     }
 
     // Daum Postcode API를 로드하는 함수
@@ -58,19 +70,28 @@ export default function SignUp() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await signupUser(formData);
-        console.log(response);
-
-        if (response.error) {
-            console.log(response.error);
-        } else {
-            await router.push("/login");
+        try {
+            let res = await updateMyInfo(formData);
+            if (res) {
+                console.log(res);
+                const userData= res.data;
+                setFormData({
+                    password: "",
+                    nickname: userData.nickname,
+                    phone: userData.phone,
+                    address: userData.address,
+                })
+                setUserNickname(userData.nickname);
+            }
+        } catch (e) {
+            console.log("유저 데이터 업데이트 실패", e);
         }
     };
 
     useEffect(() => {
         // 컴포넌트 마운트 시 스크립트 로드
         loadDaumPostcodeScript();
+        fetchMyData();
     }, []);
 
 
@@ -80,32 +101,12 @@ export default function SignUp() {
                 <div className="col-md-4 card p-3">
                     <form onSubmit={handleSubmit}>
                         <Input
-                            id="userEmail"
-                            label="이메일"
-                            placeholder="이메일을 입력하세요"
-                            type="email"
-                            onChange={(e) => handleChange("userEmail", e.target.value)}
-                        />
-                        <button
-                            type="button"
-                            className="btn btn-primary w-100"
-                            onClick={validateEmail}
-                        >
-                            이메일 중복 검사
-                        </button>
-                        <Input
                             id="password"
                             label="비밀번호"
                             placeholder="비밀번호를 입력하세요"
                             type="password"
                             onChange={(e) => handleChange("password", e.target.value)}
-                        />
-                        <Input
-                            id="name"
-                            label="이름"
-                            placeholder="이름을 입력하세요"
-                            type="text"
-                            onChange={(e) => handleChange("name", e.target.value)}
+                            value={formData.password}
                         />
                         <Input
                             id="nickname"
@@ -113,6 +114,7 @@ export default function SignUp() {
                             placeholder="닉네임을 입력하세요"
                             type="text"
                             onChange={(e) => handleChange("nickname", e.target.value)}
+                            value={formData.nickname}
                         />
                         <Input
                             id="phone"
@@ -120,6 +122,7 @@ export default function SignUp() {
                             placeholder="전화번호를 입력하세요"
                             type="tel"
                             onChange={(e) => handleChange("phone", e.target.value)}
+                            value={formData.phone}
                         />
                         <div className="mb-3">
                             <label htmlFor="address" className="form-label">주소</label>
@@ -140,7 +143,7 @@ export default function SignUp() {
                             </button>
                         </div>
                         <button type="submit" className="btn btn-primary mt-3">
-                            회원가입
+                            회원정보 수정
                         </button>
                     </form>
                 </div>

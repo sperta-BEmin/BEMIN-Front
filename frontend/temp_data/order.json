@@ -1,0 +1,486 @@
+[
+  {
+    "storeId": "550e8400-e29b-41d4-a716-446655440000",
+    "orderType": 1,
+    "storeName": "카페인 addict",
+    "address": {
+      "bcode": "4145011100",
+      "jibunAddress": "경기 하남시 미사동 609",
+      "roadAddress": "경기 하남시 미사대로 261-2",
+      "detailAddress": "302동"
+    },
+    "products": [
+      {
+        "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "productName": "아메리카노",
+        "quantity": 3,
+        "price": 4000
+      },
+      {
+        "productId": "1b4e28ba-2fa1-11d2-883f-0016d3cca427",
+        "productName": "Latte는 말이야",
+        "quantity": 2,
+        "price": 4500
+      }
+    ]
+  }, {
+    "storeId": "89677625-dcc4-47d2-9da6-46d42cb73a55",
+    "orderType": 1,
+    "storeName": "눼눼치킨",
+    "address": {
+      "bcode": "4113510500",
+      "jibunAddress": "경기 성남시 분당구 서현동 298-3",
+      "roadAddress": "경기 성남시 분당구 돌마로 478",
+      "detailAddress": "203호"
+    },
+    "products": [
+      {
+        "productId": "ea3b8a72-48f1-4771-9557-02483ec399ec",
+        "productName": "후라이드 치킨(뼈)",
+        "quantity": 2,
+        "price": 19000
+      }
+    ]
+  }, {
+    "storeId": "a68600ec-0db7-47e8-9850-b5732234f0b6",
+    "orderType": 1,
+    "storeName": "장충동 왕왕족발",
+    "address": {
+      "bcode": "4113510500",
+      "jibunAddress": "경기 성남시 분당구 서현동 298-3",
+      "roadAddress": "경기 성남시 분당구 돌마로 478",
+      "detailAddress": "203호"
+    },
+    "products": [
+      {
+        "productId": "0ac2541a-8bd3-472c-b4a7-f9d7930f8607",
+        "productName": "앞다리 족발(특대)",
+        "quantity": 1,
+        "price": 45000
+      }, {
+        "productId": "7a04b1e4-9b89-417a-9026-598ae0682fe1",
+        "productName": "참이슬",
+        "quantity": 2,
+        "price": 3500
+      }
+    ]
+  }, {
+    "storeId": "bcec2f1b-4d28-45be-bec0-7bb457518771",
+    "orderType": 1,
+    "storeName": "타코타코문어타코예끼",
+    "address": {
+      "bcode": "4113510500",
+      "jibunAddress": "경기 성남시 분당구 서현동 298-3",
+      "roadAddress": "경기 성남시 분당구 돌마로 478",
+      "detailAddress": "203호"
+    },
+    "products": [
+      {
+        "productId": "67f8ae9d-9ab7-4a5a-9af7-3fac08266c5c",
+        "productName": "타코야끼(치즈맛)",
+        "quantity": 1,
+        "price": 5000
+      }, {
+        "productId": "28fe50be-e366-4e0e-8192-2fc1cf11122c",
+        "productName": "타코야끼(매운맛)",
+        "quantity": 2,
+        "price": 4500
+      } ,{
+        "productId": "d5cc959a-2401-4860-befe-54d01ca6db57",
+        "productName": "콜라 1.25L",
+        "quantity": 2,
+        "price": 3000
+      }
+    ]
+  } , {
+    "storeId": "b537f5aa-cf54-4140-b797-c59554f1ee58",
+    "orderType": 2,
+    "storeName": "김가네",
+    "address": {
+      "bcode": "",
+      "jibunAddress": "",
+      "roadAddress": "",
+      "detailAddress": ""
+    },
+    "products": [
+      {
+        "productId": "56ef7116-5cd6-482b-a527-93e8b7da40bb",
+        "productName": "떡볶이",
+        "quantity": 3,
+        "price": 4000
+      }, {
+        "productId": "8793d6a4-a997-4e81-a723-351c21b27b5a",
+        "productName": "오뎅",
+        "quantity": 3,
+        "price": 3000
+      } ,{
+        "productId": "e2b3fb7e-0446-4b17-967a-75d07717f230",
+        "productName": "모듬김밥",
+        "quantity": 2,
+        "price": 4500
+      }, {
+        "productId": "1695ce2e-78b6-4938-b3b9-c840b5247875",
+        "productName": "야채김밥",
+        "quantity": 3,
+        "price": 3500
+      }
+    ]
+  }, {
+    "storeId": "2c4de3bf-54b2-4e86-b645-05b60b5c7593",
+    "orderType": 2,
+    "storeName": "빽다방",
+    "address": {
+      "bcode": "",
+      "jibunAddress": "",
+      "roadAddress": "",
+      "detailAddress": ""
+    },
+    "products": [
+      {
+        "productId": "95e32bf4-61fe-4588-93c3-6cd1dc3ff089",
+        "productName": "빽스치노",
+        "quantity": 3,
+        "price": 3500
+      },
+      {
+        "productId": "cdac9901-647f-4ad6-bfc9-75350b757e54",
+        "productName": "대파크림 감자라떼",
+        "quantity": 2,
+        "price": 3500
+      }
+    ]
+  }, {
+    "storeId": "5857c88f-f5be-41b4-82f5-60d1727a8918",
+    "orderType": 1,
+    "storeName": "현풍닭칼국수",
+    "address": {
+      "bcode": "4145011100",
+      "jibunAddress": "경기 하남시 미사동 609",
+      "roadAddress": "경기 하남시 미사대로 261-2",
+      "detailAddress": "302동"
+    },
+    "products": [
+      {
+        "productId": "58cecb4b-eed2-4a0e-8042-751f817358d6",
+        "productName": "닭칼국수",
+        "quantity": 1,
+        "price": 11000
+      },
+      {
+        "productId": "7b59c551-0532-4e6d-a039-cb00b1a5e1f4",
+        "productName": "매운 닭칼국수",
+        "quantity": 2,
+        "price": 12000
+      }
+    ]
+  }, {
+    "storeId": "fc277aec-0c4b-4907-8d51-0c832fc0232a",
+    "orderType": 2,
+    "storeName": "버거킹",
+    "address": {
+      "bcode": "",
+      "jibunAddress": "",
+      "roadAddress": "",
+      "detailAddress": ""
+    },
+    "products": [
+      {
+        "productId": "96c4d644-2932-4778-b6f8-fa2103d1df95",
+        "productName": "주니어와퍼",
+        "quantity": 3,
+        "price": 5000
+      },
+      {
+        "productId": "e8b4702e-5f92-4632-b168-163c9c3a9c08",
+        "productName": "비프칠리와퍼",
+        "quantity": 2,
+        "price": 9000
+      }, {
+        "productId": "4743be32-f329-4169-b0b9-cd53ad3f90fb",
+        "productName": "감자튀김(L)",
+        "quantity": 3,
+        "price": 2000
+      }
+    ]
+  }, {
+    "storeId": "404b3e08-71b4-4831-92a6-2cc7828d16ab",
+    "orderType": 2,
+    "storeName": "잉글랜드 케이크",
+    "address": {
+      "bcode": "",
+      "jibunAddress": "",
+      "roadAddress": "",
+      "detailAddress": ""
+    },
+    "products": [
+      {
+        "productId": "b0f6dbf8-3b62-4c31-aa68-3d99585618bf",
+        "productName": "과일 생크림 케이크",
+        "quantity": 1,
+        "price": 30000
+      },
+      {
+        "productId": "4701fcd8-9756-4b75-80b6-32568d7914e0",
+        "productName": "아이스 아메리카노(L)",
+        "quantity": 3,
+        "price": 4000
+      }
+    ]
+  }, {
+    "storeId": "0ab1c3ec-b4a4-4e81-bd07-878691d2112f",
+    "orderType": 1,
+    "storeName": "김창옥 백순대",
+    "address": {
+      "bcode": "4145011100",
+      "jibunAddress": "경기 하남시 미사동 609",
+      "roadAddress": "경기 하남시 미사대로 261-2",
+      "detailAddress": "302동"
+    },
+    "products": [
+      {
+        "productId": "d6bf48be-2cb2-4056-957c-c768ad5adecd",
+        "productName": "모듬 순대",
+        "quantity": 1,
+        "price": 19000
+      },
+      {
+        "productId": "3fbc17f3-fab1-4fb6-a056-6295f6243927",
+        "productName": "순대국",
+        "quantity": 1,
+        "price": 7000
+      }
+    ]
+  }, {
+    "storeId": "404b3e08-71b4-4831-92a6-2cc7828d16ab",
+    "orderType": 1,
+    "storeName": "잉글랜드 케이크",
+    "address": {
+      "bcode": "4145011100",
+      "jibunAddress": "경기 하남시 미사동 609",
+      "roadAddress": "경기 하남시 미사대로 261-2",
+      "detailAddress": "302동"
+    },
+    "products": [
+      {
+        "productId": "b0f6dbf8-3b62-4c31-aa68-3d99585618bf",
+        "productName": "과일 생크림 케이크",
+        "quantity": 1,
+        "price": 30000
+      },
+      {
+        "productId": "4701fcd8-9756-4b75-80b6-32568d7914e0",
+        "productName": "아이스 아메리카노(L)",
+        "quantity": 3,
+        "price": 4000
+      }
+    ]
+  }, {
+    "storeId": "89677625-dcc4-47d2-9da6-46d42cb73a55",
+    "orderType": 1,
+    "storeName": "눼눼치킨",
+    "address": {
+      "bcode": "4113510500",
+      "jibunAddress": "경기 성남시 분당구 서현동 298-3",
+      "roadAddress": "경기 성남시 분당구 돌마로 478",
+      "detailAddress": "203호"
+    },
+    "products": [
+      {
+        "productId": "92b15489-7a9a-4033-96e5-500ec2de3a8f",
+        "productName": "양념치킨(순살)",
+        "quantity": 2,
+        "price": 21000
+      }
+    ]
+  }, {
+    "storeId": "a68600ec-0db7-47e8-9850-b5732234f0b6",
+    "orderType": 2,
+    "storeName": "장충동 왕왕족발",
+    "address": {
+      "bcode": "4113510500",
+      "jibunAddress": "",
+      "roadAddress": "",
+      "detailAddress": ""
+    },
+    "products": [
+      {
+        "productId": "0ac2541a-8bd3-472c-b4a7-f9d7930f8607",
+        "productName": "앞다리 족발(특대)",
+        "quantity": 1,
+        "price": 45000
+      }, {
+        "productId": "978058a4-27ed-447e-8026-9406fe8f122f",
+        "productName": "막국수",
+        "quantity": 1,
+        "price": 10000
+      }
+    ]
+  }, {
+    "storeId": "550e8400-e29b-41d4-a716-446655440000",
+    "orderType": 1,
+    "storeName": "카페인 addict",
+    "address": {
+      "bcode": "4145011100",
+      "jibunAddress": "경기 하남시 미사동 609",
+      "roadAddress": "경기 하남시 미사대로 261-2",
+      "detailAddress": "302동"
+    },
+    "products": [
+      {
+        "productId": "eea51cd9-4f29-4932-a512-bb5422f1b098",
+        "productName": "치즈 베이글",
+        "quantity": 4,
+        "price": 4500
+      },
+      {
+        "productId": "1b4e28ba-2fa1-11d2-883f-0016d3cca427",
+        "productName": "Latte는 말이야",
+        "quantity": 3,
+        "price": 4500
+      }
+    ]
+  }, {
+    "storeId": "5857c88f-f5be-41b4-82f5-60d1727a8918",
+    "orderType": 1,
+    "storeName": "현풍닭칼국수",
+    "address": {
+      "bcode": "4145011100",
+      "jibunAddress": "경기 하남시 미사동 609",
+      "roadAddress": "경기 하남시 미사대로 261-2",
+      "detailAddress": "302동"
+    },
+    "products": [
+      {
+        "productId": "9e7a3ec0-aa80-4404-a91b-9a87adbc5ee6",
+        "productName": "삼계탕",
+        "quantity": 1,
+        "price": 13000
+      },
+      {
+        "productId": "7b59c551-0532-4e6d-a039-cb00b1a5e1f4",
+        "productName": "매운 닭칼국수",
+        "quantity": 2,
+        "price": 12000
+      }
+    ]
+  }, {
+    "storeId": "b5c07385-8af5-4c99-833f-5613a0175748",
+    "orderType": 1,
+    "storeName": "하남돼지집",
+    "address": {
+      "bcode": "4145011100",
+      "jibunAddress": "경기 하남시 미사동 609",
+      "roadAddress": "경기 하남시 미사대로 261-2",
+      "detailAddress": "302동"
+    },
+    "products": [
+      {
+        "productId": "cbfd9583-bb2b-449a-906d-15a64e8968ec",
+        "productName": "삼겹살",
+        "quantity": 3,
+        "price": 15000
+      },
+      {
+        "productId": "275c7d1f-2ad2-44c3-932e-14192fef5df2",
+        "productName": "물냉면",
+        "quantity": 2,
+        "price": 6000
+      }
+    ]
+  }, {
+    "storeId": "b5c07385-8af5-4c99-833f-5613a0175748",
+    "orderType": 2,
+    "storeName": "하남돼지집",
+    "address": {
+      "bcode": "",
+      "jibunAddress": "",
+      "roadAddress": "",
+      "detailAddress": ""
+    },
+    "products": [
+      {
+        "productId": "cbfd9583-bb2b-449a-906d-15a64e8968ec",
+        "productName": "삼겹살",
+        "quantity": 2,
+        "price": 15000
+      },
+      {
+        "productId": "275c7d1f-2ad2-44c3-932e-14192fef5df2",
+        "productName": "물냉면",
+        "quantity": 3,
+        "price": 6000
+      }
+    ]
+  }, {
+    "storeId": "2c4de3bf-54b2-4e86-b645-05b60b5c7593",
+    "orderType": 2,
+    "storeName": "빽다방",
+    "address": {
+      "bcode": "",
+      "jibunAddress": "",
+      "roadAddress": "",
+      "detailAddress": ""
+    },
+    "products": [
+      {
+        "productId": "5e8c604c-b504-49be-8d0b-05a415b90f15",
+        "productName": "얼죽아",
+        "quantity": 3,
+        "price": 3500
+      },
+      {
+        "productId": "5cfca6df-7f94-478e-a797-d7890ef992a6",
+        "productName": "전설의 아메리카노",
+        "quantity": 4,
+        "price": 4500
+      }
+    ]
+  }, {
+    "storeId": "0ab1c3ec-b4a4-4e81-bd07-878691d2112f",
+    "orderType": 1,
+    "storeName": "김창옥 백순대",
+    "address": {
+      "bcode": "4145011100",
+      "jibunAddress": "경기 하남시 미사동 609",
+      "roadAddress": "경기 하남시 미사대로 261-2",
+      "detailAddress": "302동"
+    },
+    "products": [
+      {
+        "productId": "d6bf48be-2cb2-4056-957c-c768ad5adecd",
+        "productName": "모듬 순대",
+        "quantity": 1,
+        "price": 19000
+      },
+      {
+        "productId": "3fbc17f3-fab1-4fb6-a056-6295f6243927",
+        "productName": "순대국",
+        "quantity": 3,
+        "price": 7000
+      }, {
+        "productId": "f2744ea9-b5d5-4035-b3e0-c9b386b95766",
+        "productName": "처음처럼",
+        "quantity": 3,
+        "price": 4500
+      }
+    ]
+  }, {
+    "storeId": "89677625-dcc4-47d2-9da6-46d42cb73a55",
+    "orderType": 2,
+    "storeName": "눼눼치킨",
+    "address": {
+      "bcode": "",
+      "jibunAddress": "",
+      "roadAddress": "",
+      "detailAddress": ""
+    },
+    "products": [
+      {
+        "productId": "ea3b8a72-48f1-4771-9557-02483ec399ec",
+        "productName": "후라이드 치킨(뼈)",
+        "quantity": 2,
+        "price": 19000
+      }
+    ]
+  }
+]

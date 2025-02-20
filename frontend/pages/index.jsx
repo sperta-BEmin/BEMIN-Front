@@ -6,6 +6,7 @@ import { foodCategoryArr } from "../context/FoodCategoryArr";
 
 export default function Home() {
     const [selectedCategory, setSelectedCategory] = useState(null);
+    console.log(foodCategoryArr);
 
     return (
         <>
@@ -65,7 +66,7 @@ export default function Home() {
             <div className="container-sm card p-2">
                 {/* 음식 리스트 */}
                 {storeDataArr.map((store, index) => (
-                    <div className="card m-1" key={index}>
+                    <div className="card m-3" key={index}>
                         {/* 식당 메뉴들이 보여질 공간 */}
                         <div
                             style={{

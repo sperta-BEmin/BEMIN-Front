@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
             <Navbar/>
 
             {/* 페이지별 콘텐츠가 들어가는 곳 */}
-            <main>{children}</main>
+            <main className="vw-100 align-items-center">{children}</main>
 
             {/* 고정 푸터 */}
         </div>
