@@ -16,8 +16,6 @@ export default async function handler(req, res) {
             body: req.method === "GET" ? null : JSON.stringify(req.body),
         };
 
-        console.log(options);
-
         const response = await fetch(backendUrl, options);
         const data = await response.json();
 

@@ -1,16 +1,18 @@
 import Link from 'next/link';
 import React, {useEffect, useState} from 'react';
 import {useAuth} from "../context/AuthContext";
-import {getUserNickname, logout} from "../utils/localUser";
+import {getUserNickname, getUserRole, logout} from "../utils/localUser";
 import {router} from "next/client";
 
 const Navbar = ({ children }) => {
     const { loggedIn, setLoggedIn } = useAuth();
     const [ nickname, setNickname ] = useState(getUserNickname());
+    const [ role, setRole ] = useState(getUserRole());
 
     useEffect(() => {
         const handleUserChange = () => {
             setNickname(getUserNickname());
+            setRole(getUserRole());
         }
 
         window.addEventListener("userChanged", handleUserChange);
@@ -78,6 +80,16 @@ const Navbar = ({ children }) => {
                     <div className="d-flex ms-auto">
                         {loggedIn ? (
                             <>
+                                {role === "OWNER" &&
+                                    <Link href="/owner" className="btn btn-warning me-2">
+                                        내 가게
+                                    </Link>
+                                }
+                                {(role === "MASTER" || role === "MANAGER") && (
+                                    <Link href="/master" className="btn btn-warning me-2">
+                                        관리자 모드
+                                    </Link>
+                                )}
                                 <Link href="/mypage" className="btn btn-success me-2">
                                     {nickname}
                                 </Link>

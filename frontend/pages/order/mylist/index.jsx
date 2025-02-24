@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {getOrderDetailsByOrderId, readOrder} from "../../../utils/userApi";
+import {getOrderDetailsByOrderId, readOrder, getPay} from "../../../utils/userApi";
 import {comma, localDateTrans} from "../../../js/common";
 
 export default function MyList() {
@@ -29,13 +29,21 @@ export default function MyList() {
 
     async function fetchOrderDetails(orderId) {
         try {
-            const response = await getOrderDetailsByOrderId(orderId);
-            if (response.error) {
-                console.error("주문 상세 조회 실패:", response.error);
+            const [ detailRes, payRes ] = await Promise.all([getOrderDetailsByOrderId(orderId), getPay(orderId)]);
+            if (detailRes.error) {
+                console.error("주문 상세 조회 실패:", detailRes.error);
             } else {
-                setOrderDetailList(response.data);
-                console.log("주문 상세 데이터:", response);
+                setOrderDetailList(detailRes.data);
+                console.log("주문 상세 데이터:", detailRes);
             }
+
+            if (payRes.error) {
+                console.error("결제 조회 실패:", payRes.error);
+            } else {
+                setPayment(detailRes.data);
+                console.log("결제 상세 데이터:", payRes);
+            }
+
         } catch (error) {
             console.error("API 요청 오류:", error);
         }
@@ -73,6 +81,10 @@ export default function MyList() {
 
         return Array.from({ length: end - start + 1 }, (_, i) => start + i);
     }
+
+    useEffect(() => {
+        console.log(payment);
+    }, [payment]);
 
     useEffect(() => {
         fetchMyList(1, 5);
@@ -153,8 +165,8 @@ export default function MyList() {
                     </div>
                 </div>
             ) : (
-                <div className="row">
-                    <div className="container card m-5 p-5 d-flex justify-content-center align-items-center">
+                <div className="row d-flex justify-content-center align-items-center">
+                    <div className="col-md-6 container card m-5 p-5 d-flex justify-content-center align-items-center">
                         <h1 className="text-secondary">주문 내역이 존재하지 않습니다.</h1>
                     </div>
                 </div>
@@ -166,13 +178,13 @@ export default function MyList() {
                         {/* 이전 버튼 */}
                         <li className={`page-item ${page === 1 ? "disabled" : ""}`}>
                             <button className="page-link" onClick={() => fetchMyList(page - 1, 5, sortOrder)}>
-                                Previous
+                                이전
                             </button>
                         </li>
 
                         {/* 페이지 번호 동적 생성 */}
                         {getPageNumbers().map((pageNum) => (
-                            <li key={pageNum} className={`page-item ${pageNum === page ? "active" : ""}`}>
+                            <li key={pageNum} className={`page-item ${pageNum === page ? "disabled" : ""}`}>
                                 <button className="page-link" onClick={() => fetchMyList(pageNum, 5, sortOrder)}>
                                     {pageNum}
                                 </button>
@@ -182,7 +194,7 @@ export default function MyList() {
                         {/* 다음 버튼 */}
                         <li className={`page-item ${page === totalPages ? "disabled" : ""}`}>
                             <button className="page-link" onClick={() => fetchMyList(page + 1, 5, sortOrder)}>
-                                Next
+                                다음
                             </button>
                         </li>
                     </ul>

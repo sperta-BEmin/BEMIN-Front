@@ -153,7 +153,6 @@ export default function SignUp() {
                                 type="text"
                                 id="jibunAddress"
                                 label="지번 주소"
-                                className="form-control form-control-lg"
                                 placeholder="주소를 검색해주세요."
                                 value={formData.address.jibunAddress}
                                 readOnly={true}
@@ -162,7 +161,6 @@ export default function SignUp() {
                                 label="도로명 주소"
                                 id="roadAddress"
                                 type="text"
-                                className="form-control form-control-lg"
                                 placeholder="주소를 검색해주세요."
                                 value={formData.address.roadAddress}
                                 readOnly={true}
@@ -171,7 +169,6 @@ export default function SignUp() {
                                 label="상세 주소"
                                 id="detail"
                                 type="text"
-                                className="form-control form-control-lg"
                                 placeholder="상세 주소를 입력해주세요."
                                 value={formData.address.detail}
                                 onChange={(e) => handleAddressChange("detail", e.target.value)}

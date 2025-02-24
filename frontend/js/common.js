@@ -22,6 +22,30 @@ export function comma(str) {
     // return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
 }
 
+/**
+ * 콤마풀기
+ * null_allowed_flag에 따라 return을 0 or ""로 함.
+ * @param str
+ * @param null_allowed_flag
+ * @returns {string|number}
+ */
+export function uc(str, null_allowed_flag) {
+    if(null_allowed_flag == true &&(str == "" || str == null)){
+        return "";
+    }else if((null_allowed_flag == false || null_allowed_flag == undefined) && (str == "" || str == null)){
+        return 0;
+    }
+
+    // String 바꿔주는 이유: replace() -> number 일때 사용불가
+    let replace_str = String(str);
+    let minus_flag = "";
+    if( replace_str.indexOf("-")>-1){
+        minus_flag = "-";
+    }
+    return minus_flag + replace_str.replace(/[^\d]+/g, '');
+    // return str.replace(/[^0-9-.]/g, '');
+}
+
 export function localDateTrans(localDate) {
     const date = new Date(localDate.split('.')[0]);
 

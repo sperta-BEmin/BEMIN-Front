@@ -22,6 +22,18 @@ export function getUserNickname() {
     return user ? user.nickname : null;
 }
 
+export function getUserEmail() {
+    if (typeof window === "undefined") return null;
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user ? user.email : null;
+}
+
+export function getUserRole() {
+    if (typeof window === "undefined") return null;
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user ? user.role : null;
+}
+
 export function setUserNickname(userNickname) {
     if (typeof window === "undefined") return null;
 
@@ -35,12 +47,6 @@ export function setUserNickname(userNickname) {
     localStorage.setItem('user', JSON.stringify(user));
 
     window.dispatchEvent(new Event("userChanged"));
-}
-
-export function getUserEmail() {
-    if (typeof window === "undefined") return null;
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user ? user.email : null;
 }
 
 export function logout() {

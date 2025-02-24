@@ -1,12 +1,85 @@
 // pages/index.jsx
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
+import Link from "next/link";
 import { comma } from "../js/common";
-import storeDataArr from '../temp_data/store_data.json';
 import { foodCategoryArr } from "../utils/FoodCategoryArr";
+const {
+    getCategories,
+    searchStore
+} = require("../utils/userApi");
 
 export default function Home() {
-    const [selectedCategory, setSelectedCategory] = useState(null);
-    console.log(foodCategoryArr);
+    const [categoriesData, setCategoriesData] = useState([]);
+    const [storeList, setStoreList] = useState([]);
+    const [search, setSearch] = useState("");
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [selectedCategory, setSelectedCategory] = useState("");
+
+    const clickedCategory = (ele) => {
+        if (ele === selectedCategory) {
+            setSelectedCategory("");
+        } else {
+            setSelectedCategory(ele);
+        }
+    }
+
+    const getPageNumbers = () => {
+        let start = Math.max(1, page - 2);
+        let end = Math.min(totalPages, start + 4);
+
+        return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+    }
+
+    const fetchStoresList = async (pageNum) => {
+        try {
+            const storeName = search.trim() === "" ? null : search;
+            const categoryName = selectedCategory.trim() === "" ? null : selectedCategory;
+            const param = {
+                page: pageNum - 1,
+                size: 10,
+                ...(storeName && { storeName }),
+                ...(categoryName && { categoryName })
+            }
+
+            let res = await searchStore(param);
+
+            if (res && res.data) {
+                // 전체 페이지와 현제 페이지 세팅
+                setTotalPages(res.data.page.totalPages);
+                setPage(pageNum);
+                setStoreList(res.data.content);
+            }
+            console.log(res.data);
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [ categoriesRes ] = await Promise.all([
+                    getCategories(),
+                ]);
+
+                if (categoriesRes && categoriesRes.data && categoriesRes.data.content.length > 0) {
+                    // 로컬 데이터 svg와 데이터베이스 카테고리 매핑 작업
+                    const categories = categoriesRes.data.content.map(category => {
+                        const match = foodCategoryArr.find(el => el.name === category.name);
+                        return match ? {...category, ...match} : category;
+                    })
+                    setCategoriesData(categories);
+                }
+            } catch (e) {
+                console.error("get data error : " + e);
+            }
+        }
+
+        fetchData();
+        fetchStoresList(1);
+    }, [])
 
     return (
         <>
@@ -19,7 +92,7 @@ export default function Home() {
                             type="search"
                             className="form-control col"
                             placeholder="오늘 뭐먹지?"
-                            onChange={(e) => console.log(e.target.value)}
+                            onChange={(e) => setSearch(e.target.value)}
                             style={{
                                 maxWidth: "720px",
                                 height: "44px"
@@ -27,8 +100,9 @@ export default function Home() {
                         />
                         {/* SVG 검색 아이콘 */}
                         <span
+                            onClick={() => {fetchStoresList(1)}}
                             className="input-group-text"
-                            style={{height: "44px"}}
+                            style={{height: "44px", cursor: "pointer"}}
                         >
                         <img
                             src="/assets/icons/search.svg"
@@ -45,12 +119,12 @@ export default function Home() {
                 </div>
                 {/* 음식 카테고리 */}
                 <div className="row justify-content-center">
-                    {foodCategoryArr.map((category) => (
+                    {categoriesData.map((category) => (
                         <div className={`col text-center btn m-2 ${
-                            selectedCategory === category.id ? "btn-primary" : ""
+                            selectedCategory === category.name ? "btn-primary" : ""
                         }`}
-                             key={category.id}
-                             onClick={() => setSelectedCategory(category.id)}
+                             key={category.categoryId}
+                             onClick={() => clickedCategory(category.name)}
                         >
                             <img
                                 src={category.svg}
@@ -65,7 +139,7 @@ export default function Home() {
             </div>
             <div className="container-sm card p-2">
                 {/* 음식 리스트 */}
-                {storeDataArr.map((store, index) => (
+                {storeList.map((store, index) => (
                     <div className="card m-3" key={index}>
                         {/* 식당 메뉴들이 보여질 공간 */}
                         <div
@@ -103,33 +177,88 @@ export default function Home() {
                         </div>
                         <div className="card-body">
                             {/* 식당 이름 */}
-                            <h5 className="card-title">
-                                {store.name}
-                                {/* 별점 */}
-                                <img
-                                    src="/assets/icons/star.svg"
-                                    alt="star-icon"
-                                    style={{ width: "20px", height: "20px", margin: "0 0 5px 5px" }}
-                                />
-                                {store.rate}
-                            </h5>
+                            <Link href={`/store/${store.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                                <h5 className="card-title">
+                                    {store.name}
+                                    {/* 별점 */}
+                                    <img
+                                        src="/assets/icons/star.svg"
+                                        alt="star-icon"
+                                        style={{ width: "20px", height: "20px", margin: "0 0 5px 5px" }}
+                                    />
+                                    5
+                                    {/*store.rate*/}
+                                </h5>
+                            </Link>
+                            {/* 카테고리 정보 */}
+                            <div
+                                style={{
+                                    display: "flex",
+                                    gap: "5px",
+                                    flexWrap: "wrap",
+                                    marginBottom: "8px",
+                                    overflowX: "auto",
+                                }}
+                            >
+                                {store.categories.map((category, idx) => (
+                                    <span
+                                        key={idx}
+                                        className="badge bg-primary"
+                                        style={{
+                                            padding: "5px 10px",
+                                            fontSize: "12px",
+                                            borderRadius: "12px",
+                                            whiteSpace: "nowrap",
+                                        }}
+                                    >
+                                        {category}
+                                    </span>
+                                ))}
+                            </div>
                             <p className="card-text">
-                                <img
-                                    src="/assets/icons/dollar.svg"
-                                    alt="dollar-icon"
-                                    style={{ width: "16px", height: "16px", margin: "0 0 5px 5px" }}
-                                />
-                                배달 팁: {comma(store.tip)}
                                 <img
                                     src="/assets/icons/money.svg"
                                     alt="money-icon"
                                     style={{ width: "16px", height: "16px", margin: "0px 0px 5px 5px" }}
                                 />
-                                최소 주문: {comma(store.maximum_amount)}
+                                최소 주문: 24,000
+                                {/*최소 주문: {comma(store.maximum_amount)}*/}
                             </p>
                         </div>
                     </div>
                 ))}
+            </div>
+
+            {/* 페이지네이션 */}
+            <div className="container-sm my-4 d-flex justify-content-center align-items-center">
+                <nav aria-label="Page navigation">
+                    <ul className="pagination">
+                        {/* 이전 버튼 */}
+                        <li className={`page-item ${page === 1 ? "disabled" : ""}`}>
+                            <button className="page-link"
+                                    onClick={() => fetchStoresList(page - 1)}>
+                                이전
+                            </button>
+                        </li>
+
+                        {/* 페이지 번호 동적 생성 */}
+                        {getPageNumbers().map((pageNum) => (
+                            <li key={pageNum} className={`page-item ${pageNum === page ? "disabled" : ""}`}>
+                                <button className="page-link" onClick={() => fetchStoresList(pageNum)}>
+                                    {pageNum}
+                                </button>
+                            </li>
+                        ))}
+
+                        {/* 다음 버튼 */}
+                        <li className={`page-item ${page === totalPages ? "disabled" : ""}`}>
+                            <button className="page-link"
+                                    onClick={() => fetchStoresList(page + 1)}>
+                                다음
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </>
     );
