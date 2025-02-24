@@ -27,27 +27,43 @@ export default function MyList() {
         }
     }
 
+    // async function fetchOrderDetails(orderId) {
+    //     try {
+    //         const [ detailRes, payRes ] = await Promise.all([getOrderDetailsByOrderId(orderId), getPay(orderId)]);
+    //         if (detailRes.error) {
+    //             console.error("주문 상세 조회 실패:", detailRes.error);
+    //         } else {
+    //             setOrderDetailList(detailRes.data);
+    //             console.log("주문 상세 데이터:", detailRes);
+    //         }
+    //
+    //         if (payRes.error) {
+    //             console.error("결제 조회 실패:", payRes.error);
+    //         } else {
+    //             setPayment(detailRes.data);
+    //             console.log("결제 상세 데이터:", payRes);
+    //         }
+    //
+    //     } catch (error) {
+    //         console.error("API 요청 오류:", error);
+    //     }
+    // }
+
     async function fetchOrderDetails(orderId) {
         try {
-            const [ detailRes, payRes ] = await Promise.all([getOrderDetailsByOrderId(orderId), getPay(orderId)]);
+            const [ detailRes ] = await Promise.all([getOrderDetailsByOrderId(orderId)]);
             if (detailRes.error) {
                 console.error("주문 상세 조회 실패:", detailRes.error);
             } else {
                 setOrderDetailList(detailRes.data);
                 console.log("주문 상세 데이터:", detailRes);
             }
-
-            if (payRes.error) {
-                console.error("결제 조회 실패:", payRes.error);
-            } else {
-                setPayment(detailRes.data);
-                console.log("결제 상세 데이터:", payRes);
-            }
-
         } catch (error) {
             console.error("API 요청 오류:", error);
         }
     }
+
+
 
     const toggleSortOrder = () => {
         const newSortOrder = sortOrder === "asc" ? "desc" : "asc";

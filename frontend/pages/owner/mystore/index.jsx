@@ -84,7 +84,7 @@ export default function MyStore() {
     const handleSubmit = async (field) => {
         const handlers = {
             name: async () => await patchStoreName(myStore.id, { name: myStore[field]} ),
-            minimumPrice: async () => patchMinPrice(myStore.id, { price: myStore[field]} ),
+            minimumPrice: async () => patchMinPrice(myStore.id, { minimumPrice: myStore[field]} ),
             phone: async () => await patchStorePhone(myStore.id, { phone: myStore[field]} ),
             address: async () => await patchStoreAddress(myStore.id, {
                 zoneCode: myStore.storeAddress.zoneCode,

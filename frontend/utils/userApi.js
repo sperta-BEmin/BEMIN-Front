@@ -56,8 +56,8 @@ const getCategories = async () => apiRequest("GET", "v1/categories");
 // store API 요청 함수들
 const getMyStore = async () => apiRequest("GET", "v1/admin/stores/by-user");
 const createStore = async (formData) => apiRequest("POST", "v1/admin/stores", {}, formData);
-const patchStoreName = async (storeId, param) => apiRequest("PATCH", `v1/admin/stores/${storeId}/name`, param );
-const patchMinPrice = async (storeId, param) => apiRequest("PATCH", `v1/admin/stores/${storeId}/minimum-price`, param);
+const patchStoreName = async (storeId, data) => apiRequest("PATCH", `v1/admin/stores/${storeId}/name`, {}, data);
+const patchMinPrice = async (storeId, data) => apiRequest("PATCH", `v1/admin/stores/${storeId}/minimum-price`, {}, data);
 const patchStorePhone = async (storeId, data) => apiRequest("PATCH", `v1/admin/stores/${storeId}/phone`, {}, data);
 const patchStoreAddress = async (storeId, data) => apiRequest("PATCH", `v1/admin/stores/${storeId}/address`, {}, data);
 const patchStoreCategories = async (storeId, data) => apiRequest("PATCH", `v1/admin/stores/${storeId}/categories`, {}, data);
