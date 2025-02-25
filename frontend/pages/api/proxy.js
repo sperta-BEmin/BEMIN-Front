@@ -16,7 +16,16 @@ export default async function handler(req, res) {
             body: req.method === "GET" ? null : JSON.stringify(req.body),
         };
 
+        console.log(headers);
+
         const response = await fetch(backendUrl, options);
+
+        const setCookieHeader = response.headers.get("set-cookie");
+
+        if (setCookieHeader) {
+            res.setHeader("Set-Cookie", setCookieHeader);
+        }
+
         const data = await response.json();
 
         res.status(response.status).json(data);

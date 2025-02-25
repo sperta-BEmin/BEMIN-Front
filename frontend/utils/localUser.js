@@ -13,7 +13,19 @@ export function isLoggedIn() {
 export function getUserToken() {
     if (typeof window === "undefined") return null;
     const user = JSON.parse(localStorage.getItem('user'));
-    return user ? user.token : null;
+    return user ? user.accessToken : null;
+}
+
+export function getRefreshTokenFromCookie() {
+    if (typeof document === "undefined") return null; // 서버에서는 실행되지 않도록 방어 코드 추가
+
+    const cookies = document.cookie.split("; ").reduce((acc, cookie) => {
+        const [key, value] = cookie.split("=");
+        acc[key] = value;
+        return acc;
+    }, {});
+
+    return cookies["refresh"] || null;
 }
 
 export function getUserNickname() {

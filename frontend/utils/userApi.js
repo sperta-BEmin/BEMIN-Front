@@ -1,4 +1,4 @@
-import {getUserToken} from "./localUser";
+import {getRefreshTokenFromCookie, getUserToken} from "./localUser";
 
 async function apiRequest(method, path, params = {}, body = null) {
     // path가 슬래시('/')로 끝나는 경우 제거
@@ -8,11 +8,18 @@ async function apiRequest(method, path, params = {}, body = null) {
     const url = `/api/proxy?path=${path}${queryString ? `&${queryString}` : ""}`;
 
     const token = getUserToken();
+    const refreshToken = getRefreshTokenFromCookie();
 
     const headers = {"Content-Type": "application/json"};
 
+    console.log(token);
+
     if (token) {
         headers.Authorization = token;
+    }
+
+    if (refreshToken) {
+        headers["refresh"] = refreshToken; // 🔹 refresh 토큰을 헤더에 추가
     }
 
     if (method !== "GET") {
@@ -24,6 +31,7 @@ async function apiRequest(method, path, params = {}, body = null) {
             method,
             headers,
             body: method === "GET" ? null : JSON.stringify(body),
+            credentials: "include",
         });
 
         if (!response.ok) {
